@@ -19,8 +19,11 @@ else:
         lucky_person = random.choice(list(friends_dict.keys()))
         print(f"{lucky_person} is the lucky one!")
 
-        # Ділимо суму на кількість учасників мінус щасливчик
-        split_amount = round(total_amount / (num_friends - 1), 2)
+        # Виправляємо потенційну помилку ділення на нуль, якщо учасник всього 1
+        if num_friends - 1 == 0:
+            split_amount = 0
+        else:
+            split_amount = round(total_amount / (num_friends - 1), 2)
 
         for name in friends_dict:
             if name == lucky_person:
